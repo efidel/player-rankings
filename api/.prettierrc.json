@@ -7,8 +7,6 @@
   "trailingComma": "all",
   "arrowParens": "always",
   "importOrder": [
-    "^(^react$|@react|react|^recoil$)",
-    "^@mui/(.*)$",
     "<THIRD_PARTY_MODULES>",
     "^@/(.*)$",
     "^[./]"
