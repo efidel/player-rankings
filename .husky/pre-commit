@@ -1,4 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged
+cd api
+npm run lint-api
+
+cd ..
+cd web
+npm run lint-web

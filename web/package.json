@@ -1,18 +1,23 @@
 {
-  "name": "player-ranking",
-  "version": "0.0.1",
-  "description": "Pokémon TCG & VG Dominican National Ranking",
+  "name": "player-ranking-web",
+  "version": "1.0.0",
+  "description": "Pokémon TCG & VG Dominican National Ranking PWA",
   "repository": {
     "type": "git",
     "url": "https://github.com/efidel/player-ranking.git"
   },
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/efidel/player-ranking/issues"
+  },
+  "homepage": "https://github.com/efidel/player-ranking#readme",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "https-preview": "serve dist",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install web/.husky",
+    "lint-web": "lint-staged"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -22,6 +27,7 @@
     "@mui/material": "^5.10.6",
     "@mui/system": "^5.10.6",
     "@mui/utils": "^5.10.6",
+    "@mui/x-data-grid": "^6.13.0",
     "is-mobile": "^3.1.1",
     "notistack": "^2.0.5",
     "react": "^18.2.0",
@@ -39,7 +45,7 @@
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
-    "@vitejs/plugin-react": "^4.0.4",
+    "@vitejs/plugin-react": "^2.1.0",
     "eslint": "^8.24.0",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -49,7 +55,7 @@
     "prettier": "2.7.1",
     "typescript": "^4.8.3",
     "vite": "^3.1.3",
-    "vite-plugin-pwa": "^0.16.4"
+    "vite-plugin-pwa": "^0.13.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [

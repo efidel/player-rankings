@@ -1,0 +1,45 @@
+{
+  "name": "player-ranking-api",
+  "version": "1.0.0",
+  "description": "Pokémon TCG & VG Dominican National Ranking API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efidel/player-ranking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/efidel/player-ranking/issues"
+  },
+  "homepage": "https://github.com/efidel/player-ranking#readme",
+  "license": "ISC",
+  "scripts": {
+    "prepare": "cd .. && husky install api/.husky",
+    "lint-api": "lint-staged"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --max-warnings=0"
+    ]
+  },
+  "author": {
+    "name": "Eddy Fidel",
+    "email": "eddy.fidel0809@gmail.com"
+  },
+  "main": "index.js"
+}
