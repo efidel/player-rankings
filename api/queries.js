@@ -7,64 +7,25 @@ const pool = new Pool({
   port: 5434,
 });
 
-const getUsers = (req, res) => {
-  pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+const getTcgRankings = (req, res) => {
+  const query = `SELECT
+                  tcg.ranking_history.id,                
+                  tcg.ranking_history."position" AS rank_no,
+                  public.player."name" AS player_name,
+                  tcg.ranking_history.points AS dominican_points,
+                  tcg.ranking_history.match_records
+                 FROM tcg.ranking_history
+                 INNER JOIN public.player on public.player.id = tcg.ranking_history.player_id
+                 ORDER BY tcg.ranking_history."position" ASC;`;
+
+  pool.query(query, (error, results) => {
     if (error) {
       throw error;
     }
     res.status(200).json(results.rows);
-  });
-};
-
-const getUserById = (req, res) => {
-  const id = parseInt(req.params.id);
-  pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    res.status(200).json(results.rows);
-  });
-};
-
-const createUser = (req, res) => {
-  const { name, email } = req.body;
-  pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    res.status(201).send(`User added with ID: ${result.insertId}`);
-  });
-};
-
-const updateUser = (req, res) => {
-  const id = parseInt(req.params.id);
-  const { name, email } = req.body;
-  pool.query(
-    'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-    [name, email, id],
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      res.status(200).send(`User modified with ID: ${id}`);
-    },
-  );
-};
-
-const deleteUser = (req, res) => {
-  const id = parseInt(req.params.id);
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    res.status(200).send(`User deleted with ID: ${id}`);
   });
 };
 
 module.exports = {
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
+  getTcgRankings,
 };
