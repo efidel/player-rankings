@@ -1,7 +1,7 @@
 {
   "name": "Player Ranking",
-  "short_name": "player-ranking-web",
-  "description": "Pokémon TCG & VG Dominican National Ranking",
+  "short_name": "player-rankings-web",
+  "description": "Pokémon TCG and VG Dominican National Rankings",
   "theme_color": "#ffffff",
   "icons": [
     {

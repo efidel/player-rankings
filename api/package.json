@@ -1,15 +1,15 @@
 {
-  "name": "player-ranking-api",
+  "name": "player-rankings-api",
   "version": "1.0.0",
-  "description": "Pokémon TCG & VG Dominican National Ranking API",
+  "description": "Pokémon TCG and VG Dominican National Rankings API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/efidel/player-ranking.git"
+    "url": "git+https://github.com/efidel/player-rankings.git"
   },
   "bugs": {
-    "url": "https://github.com/efidel/player-ranking/issues"
+    "url": "https://github.com/efidel/player-rankings/issues"
   },
-  "homepage": "https://github.com/efidel/player-ranking#readme",
+  "homepage": "https://github.com/efidel/player-rankings#readme",
   "license": "ISC",
   "scripts": {
     "dev": "node app.js",
@@ -17,7 +17,8 @@
     "lint-api": "lint-staged"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",

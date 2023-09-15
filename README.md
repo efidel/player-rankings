@@ -1,1 +1,1 @@
-# player-ranking
+# Player Rankings

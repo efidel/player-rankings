@@ -1,15 +1,15 @@
 {
-  "name": "player-ranking-web",
+  "name": "player-rankings-web",
   "version": "1.0.0",
-  "description": "Pokémon TCG & VG Dominican National Ranking PWA",
+  "description": "Pokémon TCG and VG Dominican National Rankings WEB",
   "repository": {
     "type": "git",
-    "url": "https://github.com/efidel/player-ranking.git"
+    "url": "https://github.com/efidel/player-rankings.git"
   },
   "bugs": {
-    "url": "https://github.com/efidel/player-ranking/issues"
+    "url": "https://github.com/efidel/player-rankings/issues"
   },
-  "homepage": "https://github.com/efidel/player-ranking#readme",
+  "homepage": "https://github.com/efidel/player-rankings#readme",
   "license": "ISC",
   "scripts": {
     "dev": "vite",

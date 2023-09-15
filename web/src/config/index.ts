@@ -6,7 +6,7 @@ const title = 'Player Ranking';
 
 const email = 'eddy.fidel0809@gmail.com';
 
-const repository = 'https://github.com/efidel/player-ranking';
+const repository = 'https://github.com/efidel/player-rankings';
 
 const messages = {
   app: {
