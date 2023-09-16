@@ -67,7 +67,7 @@ function Header() {
             </Button>
           </FlexBox>
           <FlexBox>
-            <FlexBox>
+            {/* <FlexBox>
               <Tooltip title="Hot keys" arrow>
                 <HotKeysButton
                   size="small"
@@ -85,7 +85,7 @@ function Header() {
                 <GitHubIcon />
               </IconButton>
             </Tooltip>
-            <Divider orientation="vertical" flexItem />
+            <Divider orientation="vertical" flexItem /> */}
             <Tooltip title="Switch theme" arrow>
               <IconButton color="info" edge="end" size="large" onClick={themeActions.toggle}>
                 <ThemeIcon />

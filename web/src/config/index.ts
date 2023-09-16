@@ -2,7 +2,7 @@ import isMobile from '@/utils/is-mobile';
 
 import type { Notifications } from './types';
 
-const title = 'Player Ranking';
+const title = 'Player Rankings';
 
 const email = 'eddy.fidel0809@gmail.com';
 
