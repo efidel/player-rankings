@@ -32,10 +32,10 @@ const columns: GridColDef[] = [
   // },
   {
     field: 'dominicanPoints',
-    headerName: 'DPs',
+    headerName: 'Dominican points',
     description: 'Dominican Points',
     type: 'number',
-    width: 120,
+    width: 190,
     align: 'center',
     headerAlign: 'center',
   },
@@ -141,7 +141,7 @@ export default function DataTable() {
 
   return (
     <>
-      <Meta title="page 1" />
+      <Meta title="TCG" />
       <FullSizeCenteredFlexBox>
         <Box style={{ width: '95%' }}>
           <Stack
@@ -160,10 +160,10 @@ export default function DataTable() {
             columns={columns}
             initialState={{
               pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
+                paginationModel: { page: 0, pageSize: 16 },
               },
             }}
-            pageSizeOptions={[10, 20]}
+            pageSizeOptions={[16, 32]}
           />
         </Box>
       </FullSizeCenteredFlexBox>

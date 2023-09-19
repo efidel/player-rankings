@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: '*' }));
 
 app.get('/tcg-rankings', db.getTcgRankings);
+app.get('/vgc-rankings', db.getVgcRankings);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
