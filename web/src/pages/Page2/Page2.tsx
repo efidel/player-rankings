@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/system';
 import Box from '@mui/system/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 import axios from 'axios';
 
@@ -11,14 +12,51 @@ import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 const columns: GridColDef[] = [
   {
+    field: 'image',
+    headerName: '',
+    sortable: false,
+    width: 80,
+    align: 'center',
+    headerAlign: 'center',
+    renderCell: (params) => {
+      return <img width="45px" height="45px" src={params.row.image} alt={params.row.id} />;
+    },
+  },
+  {
     field: 'rankNo',
-    headerName: 'Rank',
     type: 'number',
     width: 110,
     align: 'center',
     headerAlign: 'center',
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Rank
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.rankNo}
+        </Typography>
+      );
+    },
   },
-  { field: 'playerName', headerName: 'Player', width: 160 },
+  {
+    field: 'playerName',
+    width: 180,
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Player
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.playerName}
+        </Typography>
+      );
+    },
+  },
   // {
   //   field: 'lastTournamentPoints',
   //   headerName: 'Last DPs',
@@ -32,44 +70,97 @@ const columns: GridColDef[] = [
   // },
   {
     field: 'dominicanPoints',
-    headerName: 'Dominican points',
-    description: 'Dominican Points',
     type: 'number',
-    width: 190,
+    width: 210,
     align: 'center',
     headerAlign: 'center',
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Dominican points
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.dominicanPoints}
+        </Typography>
+      );
+    },
   },
   {
     field: 'matchRecords',
-    headerName: 'Match records (W-L)',
     sortable: false,
-    width: 180,
+    width: 210,
     align: 'center',
     headerAlign: 'center',
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Match records (W-L)
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.matchRecords}
+        </Typography>
+      );
+    },
   },
   {
     field: 'matchPoints',
-    headerName: 'Match points',
     type: 'number',
-    width: 160,
+    width: 180,
     align: 'center',
     headerAlign: 'center',
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Match points
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.matchPoints}
+        </Typography>
+      );
+    },
   },
   {
     field: 'gamesNo',
-    headerName: 'No. games',
     type: 'number',
     width: 150,
     align: 'center',
     headerAlign: 'center',
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        No. games
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {params.row.gamesNo}
+        </Typography>
+      );
+    },
   },
   {
     field: 'winRate',
-    headerName: 'Win rate',
-    width: 130,
+    width: 140,
     align: 'center',
     headerAlign: 'center',
-    valueGetter: (params: GridValueGetterParams) => `${params.row.winRate || 0.0}%`,
+    renderHeader: () => (
+      <Typography variant="button" gutterBottom>
+        Win rate
+      </Typography>
+    ),
+    renderCell: (params) => {
+      return (
+        <Typography variant="button" gutterBottom>
+          {`${params.row.winRate || 0.0}%`}
+        </Typography>
+      );
+    },
   },
 ];
 
@@ -116,7 +207,7 @@ export default function DataTable() {
           list.push({
             id: rank.id,
             rankNo: rank.rank_no,
-            playerName: rank.player_name,
+            playerName: rank.player_name.toUpperCase(),
             dominicanPoints: rank.dominican_points,
             matchRecords: `${wins}-${loses}`,
             matchPoints: matchPoints,
@@ -133,7 +224,20 @@ export default function DataTable() {
           });
         }
 
-        const newList = list.map((item, index) => ({ ...item, rankNo: index + 1 }));
+        const newList = list.map((item, index) => ({
+          ...item,
+          rankNo: index + 1,
+          image:
+            index == 0
+              ? '../../../public/assets/masterball.png'
+              : index == 1
+              ? '../../../public/assets/ultraball.png'
+              : index == 2
+              ? '../../../public/assets/greatball.png'
+              : index == 3
+              ? '../../../public/assets/nestball.png'
+              : '../../../public/assets/pokeball.png',
+        }));
         setRows(newList);
       })
       .catch(console.error);
@@ -153,8 +257,6 @@ export default function DataTable() {
             <h1>VGC Player Rankings</h1>
             <h5>(last updated on September 3, 2023)</h5>
           </Stack>
-          {/* <Stack direction="row" spacing={1} alignItems={'center'} marginBottom={10}> */}
-
           <DataGrid
             rows={rows}
             columns={columns}
